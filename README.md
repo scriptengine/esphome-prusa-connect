@@ -1,9 +1,9 @@
-# ESPHome Prusa Connect Camera — AI Thinker ESP32-CAM
+# ESPHome Prusa Connect Camera â€” AI Thinker ESP32-CAM
 
 This project creates the software to upload images from an ESP32-CAM (AI Thinker ESP32-CAM) to [Prusa Connect](https://connect.prusa3d.com).
 Prusa Connect has a camera feature that presents the last picture from cameras associated with your Prusa Printer.
 I use ESP32-CAM rather than the Prusa Buddy camera as I have a case that tucks tightly into the RIGHT hand front corner of the frame so I can
-have a left and right camera view and two different views of my print, not just one. Additionally, the ESP32s can be purchased for £10 and the cameras easily replaced, so if the heat or the fumes of the chamber damage them it's not the most costly of problems.
+have a left and right camera view and two different views of my print, not just one. Additionally, the ESP32s can be purchased for Â£10 and the cameras easily replaced, so if the heat or the fumes of the chamber damage them it's not the most costly of problems.
 
 This software's unique point is it uses [ESPHome](https://esphome.io/) which:
 - Allows it to be controlled by and for data to be sent to [Home Assistant](https://www.home-assistant.io/)
@@ -24,8 +24,10 @@ I have created 3D printable camera cases for the ESP32s on Printables:
 ## Hardware
 
 - **Board:** AI Thinker ESP32-CAM (OV2640 sensor, 8 MB external PSRAM)
-- **Framework:** Arduino — required; the component uses `ESP.getEfuseMac()` for the device fingerprint
+- **Framework:** Arduino â€” required; the component uses `ESP.getEfuseMac()` for the device fingerprint
 - Not tested on other ESP32-CAM variants
+
+[![AI Thinker ESP32-CAM](https://www.espboards.dev/img/viytafC5xd-220.webp)](https://www.espboards.dev/esp32/esp32cam/)
 
 ---
 
@@ -54,9 +56,9 @@ external_components:
 ## Prusa Connect Setup
 
 1. Log in to [connect.prusa3d.com](https://connect.prusa3d.com)
-2. Add a camera — choose **Other camera**
+2. Add a camera â€” choose **Other camera**
 3. Copy the token shown and add it to your `secrets.yaml` as `prusa_token`
-4. Flash your ESP32-CAM — on the first successful snapshot the device registers automatically
+4. Flash your ESP32-CAM â€” on the first successful snapshot the device registers automatically
 
 ---
 
@@ -164,11 +166,11 @@ prusa_connect:
 
 | Option | Required | Default | Description |
 |--------|----------|---------|-------------|
-| `token` | Yes | — | Prusa Connect camera token |
+| `token` | Yes | â€” | Prusa Connect camera token |
 | `camera_name` | No | `ESP32 Camera` | Camera name shown in Prusa Connect |
 | `interval` | No | `30s` | Upload interval |
 | `debug_mode` | No | `false` | Enables extended sensor reporting (heap, counters) |
-| `token_text` | No | — | ID of a `text` entity whose value overrides `token` at runtime |
+| `token_text` | No | â€” | ID of a `text` entity whose value overrides `token` at runtime |
 
 ### Optional sensors
 
@@ -242,14 +244,14 @@ Browse to `http://[device-name].local/` to access the ESPHome web interface. Thr
 
 | Control | Description |
 |---------|-------------|
-| Prusa Token | Runtime override — stored in device flash, survives reboots and OTA updates. Set this if you need to change the token without reflashing. |
-| Toggle H-Mirror | Flips the image horizontally — each press toggles the current state |
-| Toggle V-Flip | Flips the image vertically — each press toggles the current state |
-| Camera Brightness | −2 to +2 (default 0) |
-| Camera Contrast | −2 to +2 (default 0) |
-| Camera JPEG Quality | 4 (highest quality, largest file) to 63 (lowest quality) — default 10 |
-| Camera Resolution | QVGA → UXGA — UXGA is the default and maximum supported |
-| Camera Saturation | −2 to +2 (default 0) |
+| Prusa Token | Runtime override â€” stored in device flash, survives reboots and OTA updates. Set this if you need to change the token without reflashing. |
+| Toggle H-Mirror | Flips the image horizontally â€” each press toggles the current state |
+| Toggle V-Flip | Flips the image vertically â€” each press toggles the current state |
+| Camera Brightness | âˆ’2 to +2 (default 0) |
+| Camera Contrast | âˆ’2 to +2 (default 0) |
+| Camera JPEG Quality | 4 (highest quality, largest file) to 63 (lowest quality) â€” default 10 |
+| Camera Resolution | QVGA â†’ UXGA â€” UXGA is the default and maximum supported |
+| Camera Saturation | âˆ’2 to +2 (default 0) |
 | Camera White Balance | auto / sunny / cloudy / office / home |
 | Flash LED | Toggles the onboard illumination LED |
 | Restart Device | Reboots the ESP32 immediately |
@@ -260,8 +262,8 @@ Browse to `http://[device-name].local/` to access the ESPHome web interface. Thr
 |---------|-------------|
 | Automatic Exposure Control (recommended: on) | Lets the sensor choose exposure automatically. Turn off to set exposure manually. |
 | Automatic Gain Control (recommended: on) | Lets the sensor choose gain automatically. Turn off to apply AGC Gain Limit. |
-| Manual exposure time | 0–1200 — only takes effect when AEC is off |
-| AGC Gain Limit | Maximum sensor gain ceiling: 2× to 128× — only takes effect when AGC is off |
+| Manual exposure time | 0â€“1200 â€” only takes effect when AEC is off |
+| AGC Gain Limit | Maximum sensor gain ceiling: 2Ã— to 128Ã— â€” only takes effect when AGC is off |
 
 ### Debug Logging
 
@@ -291,7 +293,7 @@ When on, the following are published as Home Assistant sensor entities after eac
 |--------|-------------|
 | Upload Total | Cumulative upload attempts since last boot |
 | Upload Fail | Cumulative failed uploads since last boot |
-| Upload Consecutive | Consecutive successful uploads — resets to 0 on any failure |
+| Upload Consecutive | Consecutive successful uploads â€” resets to 0 on any failure |
 | Heap Largest Block | Largest contiguous free block in internal heap (bytes) |
 | Heap Free | Total free internal heap (bytes) |
 | Firmware Version | Currently running version string |
@@ -300,8 +302,8 @@ The following are always published regardless of the debug switch:
 
 | Sensor | Description |
 |--------|-------------|
-| Last Upload Success | Binary — was the last upload successful |
-| Upload Status | Text — OK / Rate limited / Auth error / Network error / etc. |
+| Last Upload Success | Binary â€” was the last upload successful |
+| Upload Status | Text â€” OK / Rate limited / Auth error / Network error / etc. |
 | Seconds Since Last Upload | Seconds elapsed since the last frame was queued |
 | WiFi Signal | RSSI in dBm, updated every 60 s |
 | Reset Reason | Why the device last restarted |
@@ -322,21 +324,21 @@ To enable debug logging: flip the **Debug Logging (off | on)** switch to on in t
 
 The TLS handshake to `connect.prusa3d.com` allocates from internal heap (not PSRAM). Watch the **Heap Largest Block** sensor:
 
-- Above ~70 KB — healthy, uploads will succeed
-- 65–70 KB — marginal, occasional TLS failures likely
-- Below 65 KB — TLS handshakes begin to fail consistently
+- Above ~70 KB â€” healthy, uploads will succeed
+- 65â€“70 KB â€” marginal, occasional TLS failures likely
+- Below 65 KB â€” TLS handshakes begin to fail consistently
 
 Heap is stable during normal operation. If it is shrinking over successive uploads, suspect heap fragmentation. The device will automatically reboot after 5 minutes with no successful uploads (see camera stall watchdog below).
 
-### Upload failures — errno 119
+### Upload failures â€” errno 119
 
-Occasionally a write to the Prusa Connect server stalls mid-upload, typically at 60–70 KB into a 72 KB frame:
+Occasionally a write to the Prusa Connect server stalls mid-upload, typically at 60â€“70 KB into a 72 KB frame:
 
 ```
 Write timed out at 61440/72782 bytes, errno 119 (EINPROGRESS)
 ```
 
-This is a known lwIP/TLS interaction on the ESP32 Arduino framework. A failure rate of around 4% is normal and the device recovers on the next cycle automatically. Use the **Upload Consecutive** counter as a health indicator — a sustained run above 20 consecutive successes indicates the device is operating normally.
+This is a known lwIP/TLS interaction on the ESP32 Arduino framework. A failure rate of around 4% is normal and the device recovers on the next cycle automatically. Use the **Upload Consecutive** counter as a health indicator â€” a sustained run above 20 consecutive successes indicates the device is operating normally.
 
 ### Reset reason
 
@@ -346,8 +348,8 @@ The **Reset Reason** entity shows why the device last restarted. Expected values
 |--------|---------|
 | `Power-on` | Normal power cycle |
 | `Software (esp_restart)` | OTA update or Restart Device button |
-| `Panic / exception` | Firmware crash — investigate if repeated |
-| `Task watchdog` / `Interrupt watchdog` | Severe stall — rare |
+| `Panic / exception` | Firmware crash â€” investigate if repeated |
+| `Task watchdog` / `Interrupt watchdog` | Severe stall â€” rare |
 
 Repeated `Panic / exception` resets suggest a stack overflow in the FreeRTOS upload task or critical heap exhaustion immediately before the upload attempt.
 
@@ -356,7 +358,7 @@ Repeated `Panic / exception` resets suggest a stack overflow in the FreeRTOS upl
 If the OV2640 driver stalls and stops producing frames, the device reboots automatically after 5 minutes of no upload activity:
 
 ```
-No upload queued for 5 minutes — camera stalled, rebooting
+No upload queued for 5 minutes â€” camera stalled, rebooting
 ```
 
 This is a recovery mechanism, not a normal event. If it recurs frequently, check WiFi stability and heap headroom.
